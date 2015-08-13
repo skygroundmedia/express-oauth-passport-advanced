@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if locals.user
+    div
+      img(src="#{user.image}")
+      h2 #{user.name}
