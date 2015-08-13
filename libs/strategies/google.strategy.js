@@ -12,15 +12,20 @@ module.exports = function( config ){
 		config,
 	    function(req, accessToken, refreshToken, profile, done){
 			//C. Let's create a single user and bind that to one DB account
+			var raw  = profile._raw
+			var json = profile._json
 			var user = {
-				email: profile.emails[0].value,
-				image : profile._json.image.url,
+				email:        profile.emails[0].value,
+				image :       json.image.url,
 				displayName : profile.displayName,
 				google: {
-					id: profile.id,
-					token: accessToken
+					id:    profile.id,
+					token: accessToken,
+					json:  json,
+					raw:   raw
 				}
 			};
+			console.log(profile)
 			//D. 
 	        done(null, user);
 	    }	

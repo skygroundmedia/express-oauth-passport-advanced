@@ -16,8 +16,9 @@ router.route('/google/callback').get(passport.authenticate('google', {
 
 router.route('/google').get(passport.authenticate('google', {
 	scope: [
-		'https://www.googleapis.com/auth/userinfo.profile',
-		'https://www.googleapis.com/auth/userinfo.email'
+		'profile',
+		'email',
+		'openid'
 	]
 }))
 

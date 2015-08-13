@@ -21,15 +21,20 @@ module.exports = function( config ){
 		config,
 	    function(req, token, tokenSecret, profile, done){
 			//C. Let's create a single user and bind that to one DB account
-			///console.log("!!!", profile)
+			var raw  = profile._raw
 			var json = profile._json
 			var user = {
-				email: null,
-				image : profile._json.pictureUrls.values[0],
-				displayName : json.displayName,
-				linkedin: profile._json
+				email: profile.email,
+				image : json.pictureUrls.values[0],
+				displayName : profile.displayName,
+				linkedin: {
+					id: profile.id,
+					token: token,
+					json:  json,
+					raw:   raw
+				}
 			};
-			console.log(user)
+			console.log(profile)
 			//D. 
 	        done(null, user);
 	    }	

@@ -16,20 +16,20 @@ module.exports = function( config ){
 		config,
 	    function(req, accessToken, refreshToken, profile, done){
 			//C. Let's create a single user and bind that to one DB account
-			console.log(profile)
+			var raw  = profile._raw
+			var json = profile._json
 			var user = {
-				email: profile.emails,
-				//Facebook does not return an image from an oAuth call
-				image : null,
-				displayName : profile.displayName,
+				email:        json.email,
+				image :       json.picture.data.url,
+				displayName : json.first_name + " " + json.last_name,
 				facebook: {
-					id: profile.id,
-					username: profile.username,
-					token: accessToken, 
-					gender: profile.gender,
-					url: profile.profileUrl
+					id:    profile.id,
+					token: accessToken,
+					json:  json,
+					raw:   raw
 				}
 			};
+			console.log(user.facebook.json)
 			//D. 
 	        done(null, user);
 	    }	
