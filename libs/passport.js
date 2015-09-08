@@ -36,4 +36,8 @@ module.exports = function( app, config ){
 
 	//F. LinkedIn Strategy
 	require('./strategies/linkedin.strategy')( config.strategies.linkedin );
+	
+	//G. Local Strategy
+	require('./strategies/local.strategy')( config.strategies.local );
+	
 }

@@ -5,7 +5,6 @@ var passport = require('passport')
 , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 module.exports = function( config ){
-	console.log("GoogleStrategy loaded")
 	//A. Tell http://console.developers.google.com who we are
 	passport.use(new GoogleStrategy(
 		//B. Config found in /config/config.js.dist

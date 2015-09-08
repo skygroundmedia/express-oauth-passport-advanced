@@ -24,40 +24,59 @@ module.exports = {
         port:     process.env.PORT || 8080,
         ip:       process.env.HOST || "localhost",
 		strategies: {
+			//Google Config: https://code.google.com/apis/console
+			//https://developers.google.com/+/web/api/rest/oauth#login-scopes	
+			//https://developers.google.com/apis-explorer/#p/
 			google: {
-				//Google Config: https://code.google.com/apis/console
-				clientID:     '',
-				clientSecret: '',
-				callbackURL:  'http://localhost:8080/auth/google/callback'
+				clientID:     '390346120956-o7tvjnq9iqc3m41tuij3h1277uk8m68o.apps.googleusercontent.com',
+				clientSecret: '0AGK_CD69MmgjUqwFmEdlRzF',
+				callbackURL:  'http://localhost:8080/auth/google/callback',
+				profileFields: [
+					'name', 'email', 'address'
+				]
 			}, 
 			//Twitter Config: https://apps.twitter.com
+			//https://dev.twitter.com/overview/api/users
 			twitter: {
-				consumerKey: '',
-				consumerSecret: '',
+				consumerKey: '6GVJEPke3kJGvmIqjSBi3iMhv',
+				consumerSecret: '8ngXaq8ZVOz5fEda5C5EydoEwnbjohjqqbiiNdvgzxYUah8w10',
 				callbackURL: 'http://localhost:8080/auth/twitter/callback',
 				passReqToCallback: true
 			},
 			//Facebook Config: https://developers.facebook.com/apps
+			//https://developers.facebook.com/docs/graph-api/reference/user
 			facebook: {
-				clientID: '',
-				clientSecret: '',
+				clientID: '1685410461680498',
+				clientSecret: '62f435736ac61129663a7295254670ea',
 				callbackURL:  'http://localhost:8080/auth/facebook/callback',
-				passReqToCallback: true
+				passReqToCallback: true,
+				profileFields: [ 'id', 'name', 'address', 'age_range', 'location', 'locale', 'timezone',
+					'photos', 'about', 'bio', 'birthday', 'context', 'currency', 'devices', 'education', 
+					'email', 'gender', 'hometown', 'interested_in', 'is_verified', 'languages', 'name_format', 
+					'payment_pricepoints', 'political',
+					'relationship_status', 'religion', 'significant_other', 'verified',
+					'website', 'work', 'cover', 'movies', 'music', 'television'
+				]
 			},
 			//https://github.com/settings/applications
 			github: {
-				clientID: "",
-				clientSecret: "",
+				clientID: "4c0afced01cad68f3886",
+				clientSecret: "f67e6a02dd6e3acd3be794f666e7c66d0a719e04",
 				callbackURL:  'http://localhost:8080/auth/github/callback'
 			},
 			//https://developer.linkedin.com/
+			//https://developer.linkedin.com/docs/fields
 			linkedin: {
-				consumerKey: "",
-				consumerSecret: "",
+				consumerKey: "75mgmydq8elwle",
+				consumerSecret: "vSrylKR9T7SA1xrP",
 				callbackURL:  'http://localhost:8080/auth/linkedin/callback',
 				profileFields: [ 'email-addresses', 'first-name', 'last-name', 'headline', 
-								'location', 'industry', 'num-connections', 'num-connections-capped', 
-								'specialties', 'positions', 'picture-url', 'picture-urls::(original)']
+					'location', 'industry', 'num-connections', 'num-connections-capped', 
+					'specialties', 'positions', 'picture-url', 'picture-urls::(original)'
+				]
+			},
+			local: {
+				username: ''
 			}
 		}
     },
@@ -67,37 +86,39 @@ module.exports = {
         port:     process.env.OPENSHIFT_NODEJS_PORT || 80,
         ip  :     process.env.OPENSHIFT_NODEJS_IP,
 		strategies: {
-			//Google Config: https://code.google.com/apis/console
 			google: {
-				clientID:     '',
-				clientSecret: '',
+				clientID:     '390346120956-o7tvjnq9iqc3m41tuij3h1277uk8m68o.apps.googleusercontent.com',
+				clientSecret: '0AGK_CD69MmgjUqwFmEdlRzF',
 				callbackURL:  rootPath + '/auth/google/callback'
 			},
-			//Twitter Config: https://apps.twitter.com
 			twitter: {
-				consumerKey: '',
-				consumerSecret: '',
+				consumerKey: '6GVJEPke3kJGvmIqjSBi3iMhv',
+				consumerSecret: '8ngXaq8ZVOz5fEda5C5EydoEwnbjohjqqbiiNdvgzxYUah8w10',
 				callbackURL: rootPath + '/twitter/callback',
 				passReqToCallback: true
 			},
-			//Facebook Config: https://developers.facebook.com/apps
 			facebook: {
-				clientID: '',
-				clientSecret: '',
+				clientID: '1685410461680498',
+				clientSecret: '62f435736ac61129663a7295254670ea',
 				callbackURL:  rootPath + '/auth/facebook/callback',
 				passReqToCallback: true
 			},
+			github: {
+				clientID: "4c0afced01cad68f3886",
+				clientSecret: "f67e6a02dd6e3acd3be794f666e7c66d0a719e04",
+				callbackURL:  rootPath + '/auth/github/callback'
+			},
 			//https://github.com/settings/applications
 			github: {
-				clientID: "",
-				clientSecret: "",
-				callbackURL:  'http://localhost:8080/auth/github/callback'
+				clientID: "4c0afced01cad68f3886",
+				clientSecret: "f67e6a02dd6e3acd3be794f666e7c66d0a719e04",
+				callbackURL:  rootPath + '/auth/github/callback'
 			},
 			//https://developer.linkedin.com/
 			linkedin: {
-				consumerKey: "",
-				consumerSecret: "",
-				callbackURL:  'http://localhost:8080/auth/linkedin/callback',
+				consumerKey: "75mgmydq8elwle",
+				consumerSecret: "vSrylKR9T7SA1xrP",
+				callbackURL:  rootPath + '/auth/linkedin/callback',
 				profileFields: [ 'email-addresses', 'first-name', 'last-name', 'headline', 
 								'location', 'industry', 'num-connections', 'num-connections-capped', 
 								'specialties', 'positions', 'picture-url', 'picture-urls::(original)']

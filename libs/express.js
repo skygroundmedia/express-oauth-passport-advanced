@@ -10,6 +10,7 @@ var express    = require('express')
 , passport     = require('passport')
 , session      = require('express-session')
 , compression  = require('compression')
+, flash        = require('connect-flash')
 
 module.exports = function( app, config ){
     app.locals.pretty = true;
@@ -25,6 +26,7 @@ module.exports = function( app, config ){
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded( { extended: true }));
     app.use(express.static(path.join( config.rootPath, 'public')));    
+	app.use(flash())
 	
 	//Passport ///////////////////////////////////////
 	app.use(session({ 

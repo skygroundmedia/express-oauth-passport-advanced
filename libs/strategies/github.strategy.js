@@ -5,7 +5,6 @@ var passport = require('passport')
 , GithubStrategy = require('passport-github').Strategy;
 
 module.exports = function( config ){
-	console.log("GithubStrategy loaded")
 	//A. Tell http://console.developers.google.com who we are
 	passport.use(new GithubStrategy(
 		//B. Config found in /config/config.js.dist

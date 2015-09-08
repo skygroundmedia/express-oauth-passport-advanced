@@ -9,7 +9,6 @@ var passport = require('passport')
 , FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function( config ){
-	console.log("FacebookStrategy loaded")
 	//A. Tell http://console.developers.google.com who we are
 	passport.use(new FacebookStrategy(
 		//B. Config found in /config/config.js.dist

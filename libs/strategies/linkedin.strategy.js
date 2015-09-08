@@ -14,7 +14,6 @@ var passport = require('passport')
 , LinkedInStrategy = require('passport-linkedin').Strategy;
 
 module.exports = function( config ){
-	console.log("LinkedInStrategy loaded")
 	//A. Tell http://console.developers.google.com who we are
 	passport.use(new LinkedInStrategy(
 		//B. Config found in /config/config.js.dist
